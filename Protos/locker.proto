@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option csharp_namespace = "EncryptLocker";
+
+package encryptlocker;
+
+service LockerSvc {
+  rpc GetAvailableLockers (Empty) returns (GetLockersReply);
+  rpc AddLocker (AddLockerRequest) returns (Empty);
+  rpc DeleteLocker (DeleteLockerRequest) returns (DeleteLockerReply);
+}
+
+//Shared
+message Empty {
+
+}
+
+//AddLocker
+message AddLockerRequest {
+  string name = 1;
+  bytes key_hash = 2;
+}
+
+//DeleteLocker
+message DeleteLockerRequest {
+  int32 id = 1;
+  bytes key_hash = 2;
+}
+
+message DeleteLockerReply {
+  bool is_deleted = 1;
+  string message = 2;
+}
+
+//GetAvailableLockers
+message LockerMessage {
+  int32 id = 1;
+  string name = 2;
+}
+
+message GetLockersReply {
+  repeated LockerMessage lockers = 1;
+}

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\..\Protos\locker.proto" GrpcServices="Client" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\EncryptLocker.Website.Client\EncryptLocker.Website.Client.csproj" />
+    <PackageReference Include="Google.Protobuf" Version="3.25.3" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.60.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.61.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.2" />
+  </ItemGroup>
+
+</Project>
