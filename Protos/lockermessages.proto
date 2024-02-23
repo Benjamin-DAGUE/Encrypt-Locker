@@ -1,0 +1,62 @@
+syntax = "proto3";
+package encryptlocker.messages;
+option csharp_namespace = "EncryptLocker.Messages";
+
+import "sharedmessages.proto";
+
+
+message LockerMessage {
+  int32 id = 1;
+  string name = 2;
+  bytes salt = 3;
+  bool is_read = 4;
+  bool is_read_write = 5;
+  bool is_admin = 6;
+  //google.protobuf.Timestamp deletion_date = 7;
+
+}
+
+//GetLockers
+message GetLockersRequest {
+  int32 id = 1;
+}
+
+message GetLockersReply {
+  encryptlocker.messages.ResultMessage result = 1;
+  repeated LockerMessage lockers = 2;
+}
+
+//AddLocker
+message AddLockerRequest {
+  string name = 1;
+  bytes password_hash = 2;
+  bytes salt = 3;
+}
+
+//GetLockerState
+message GetLockerStateRequest { }
+
+message GetLockerStateReply {
+  bool is_open = 1;
+}
+
+//OpenLocker
+message OpenLockerRequest {
+  bytes password_hash = 1;
+}
+
+message OpenLockerReply { }
+
+//UpdateLocker
+message UpdateLockerRequest {
+  string name = 1;
+}
+
+message UpdateLockerReply { }
+
+//DeleteLocker
+message DeleteLockerRequest {
+  bytes password_hash = 1;
+}
+
+message DeleteLockerReply { }

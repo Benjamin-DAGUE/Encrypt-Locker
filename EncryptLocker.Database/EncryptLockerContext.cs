@@ -16,7 +16,7 @@ public class EncryptLockerContext : DbContext
 
     #region Constructors
 
-    protected EncryptLockerContext()
+    public EncryptLockerContext()
     {
 
     }
@@ -70,6 +70,17 @@ public class EncryptLockerContext : DbContext
         {
             e.HasKey(e => e.Id);
         });
+        modelBuilder.Entity<SafeEntry>(e =>
+        {
+            e.HasOne(e => e.Login).WithMany().HasForeignKey(e => e.LoginId).OnDelete(DeleteBehavior.NoAction);
+            e.HasOne(e => e.Password).WithMany().HasForeignKey(e => e.PasswordId).OnDelete(DeleteBehavior.NoAction);
+            e.HasOne(e => e.Url).WithMany().HasForeignKey(e => e.UrlId).OnDelete(DeleteBehavior.NoAction);
+            e.HasOne(e => e.Note).WithMany().HasForeignKey(e => e.NoteId).OnDelete(DeleteBehavior.NoAction);
+        });
+        modelBuilder.Entity<SafeGroup>(e =>
+        {
+
+        });
         modelBuilder.Entity<SafeBase>(e =>
         {
             e.HasKey(e => e.Id);
@@ -77,19 +88,9 @@ public class EncryptLockerContext : DbContext
                 .HasValue<SafeGroup>(SafeBase.SAFE_GROUP_DISCRIMINATOR)
                 .HasValue<SafeEntry>(SafeBase.SAFE_ENTRY_DISCRIMINATOR);
 
-            e.HasOne(e => e.Parent).WithMany(d => d.Children).HasForeignKey(e => e.ParentId);
-            e.HasOne(e => e.Title).WithMany().HasForeignKey(e => e.TitleId);
-        });
-        modelBuilder.Entity<SafeEntry>(e =>
-        {
-            e.HasOne(e => e.Login).WithMany().HasForeignKey(e => e.LoginId);
-            e.HasOne(e => e.Password).WithMany().HasForeignKey(e => e.PasswordId);
-            e.HasOne(e => e.Url).WithMany().HasForeignKey(e => e.UrlId);
-            e.HasOne(e => e.Note).WithMany().HasForeignKey(e => e.NoteId);
-        });
-        modelBuilder.Entity<SafeGroup>(e =>
-        {
-
+            e.HasOne(e => e.Locker).WithMany(d => d.SafeEntries).HasForeignKey(e => e.LockerId);
+            e.HasOne(e => e.Parent).WithMany(d => d.Children).HasForeignKey(e => e.ParentId).OnDelete(DeleteBehavior.NoAction);
+            e.HasOne(e => e.Title).WithMany().HasForeignKey(e => e.TitleId).OnDelete(DeleteBehavior.NoAction);
         });
     }
 

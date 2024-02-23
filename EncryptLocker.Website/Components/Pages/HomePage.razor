@@ -1,0 +1,27 @@
+﻿@page "/"
+@inject LockerDataService DataService
+
+<PageTitle>Accueil</PageTitle>
+
+@if (_lockers != null)
+{
+    <MudGrid>
+        @foreach (Locker locker in _lockers)
+        {
+            <MudItem @key=locker xs="12" md="6" lg="4" xl="2">
+                <MudPaper Elevation="4" Class="pa-2 d-flex flex-column flex-grow-1 align-center" Height="140px">
+                    <MudText Class="flex-grow-1" Typo="Typo.h4" GutterBottom="true">
+                        @locker.Name
+                    </MudText>
+                    <MudButton Variant="Variant.Filled" Href="@($"/locker/{locker.Id}")">Ouvrir</MudButton>
+                </MudPaper>
+            </MudItem>
+        }
+        <MudItem xs="12" md="6" lg="4" xl="2">
+            <MudPaper Elevation="4" Class="pa-4 d-flex align-center justify-center" Height="140px">
+                <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Href="/addlocker" />
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+}
+

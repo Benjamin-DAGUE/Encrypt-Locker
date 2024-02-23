@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+import "sharedmessages.proto";
+import "accessrightmessages.proto";
+import "lockermessages.proto";
+import "safeentrymessages.proto";
+
+option csharp_namespace = "EncryptLocker";
+
+package encryptlocker;
+
+service LockerSvc {
+  rpc GetLockers (encryptlocker.messages.GetLockersRequest) returns (encryptlocker.messages.GetLockersReply);
+  rpc AddLocker (encryptlocker.messages.AddLockerRequest) returns (encryptlocker.messages.LockerMessage);
+  rpc LockerStream (stream LockerStreamRequest) returns (stream LockerStreamReply);
+}
+
+/*******************
+* LockerStream *
+*******************/
+
+message LockerStreamRequest {
+  int32 locker_id = 1;
+  oneof type {
+    //Locker
+    encryptlocker.messages.GetLockerStateRequest get_locker_state = 2;
+    encryptlocker.messages.OpenLockerRequest open_locker = 3;
+    encryptlocker.messages.UpdateLockerRequest update_locker = 4;
+    encryptlocker.messages.DeleteLockerRequest delete_locker = 5;
+    //AccessRight
+    encryptlocker.messages.GetAccessRightsRequest get_acess_rights = 6;
+    encryptlocker.messages.AddAccessRightsRequest add_acess_rights = 7;
+    encryptlocker.messages.UpdateAccessRightsRequest update_acess_rights = 8;
+    encryptlocker.messages.DeleteAccessRightsRequest delete_acess_rights = 9;
+    //SafeEntry
+    encryptlocker.messages.GetSafeEntriesRequest get_safe_entries = 10;
+    encryptlocker.messages.AddSafeEntryRequest add_safe_entry = 11;
+    encryptlocker.messages.UpdateSafeEntryRequest update_safe_entry = 12;
+    encryptlocker.messages.DeleteSafeEntryRequest delete_safe_entry = 13;
+    encryptlocker.messages.GetCypherPasswordRequest get_cypher_password = 14;
+  }
+}
+
+message LockerStreamReply {
+  encryptlocker.messages.ResultMessage result = 1;
+  oneof reply {
+    //Locker
+    encryptlocker.messages.GetLockerStateReply get_locker_state = 2;
+    encryptlocker.messages.OpenLockerReply open_locker = 3;
+    encryptlocker.messages.UpdateLockerReply update_locker = 4;
+    encryptlocker.messages.DeleteLockerReply delete_locker = 5;
+    //AccessRight
+    encryptlocker.messages.GetAccessRightsReply get_acess_rights = 6;
+    encryptlocker.messages.AddAccessRightsReply add_acess_rights = 7;
+    encryptlocker.messages.UpdateAccessRightsReply update_acess_rights = 8;
+    encryptlocker.messages.DeleteAccessRightsReply delete_acess_rights = 9;
+    //SafeEntry
+    encryptlocker.messages.GetSafeEntriesReply get_safe_entries = 10;
+    encryptlocker.messages.AddSafeEntryReply add_safe_entry = 11;
+    encryptlocker.messages.UpdateSafeEntryReply update_safe_entry = 12;
+    encryptlocker.messages.DeleteSafeEntryReply delete_safe_entry = 13;
+    encryptlocker.messages.GetCypherPasswordReply get_cypher_password = 14;
+  }
+}
+
+

@@ -11,13 +11,20 @@
 	
 	
     <link rel="stylesheet" href="EncryptLocker.Website.styles.css" />
-    <HeadOutlet />
+    <HeadOutlet @rendermode=_interactiveServerNoPreRender />
 </head>
 
 <body>
-    <Routes />
+    <Routes @rendermode=_interactiveServerNoPreRender />
     <script src="_framework/blazor.web.js"></script>
-	<script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script src="js/crypto.js"></script>
+    <script src="js/locker.js"></script>
 </body>
 
 </html>
+
+
+@code {
+    private InteractiveServerRenderMode _interactiveServerNoPreRender = new InteractiveServerRenderMode(false);
+}

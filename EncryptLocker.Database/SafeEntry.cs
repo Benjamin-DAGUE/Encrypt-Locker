@@ -1,6 +1,6 @@
 ﻿namespace EncryptLocker.Database;
 
-public class SafeEntry
+public class SafeEntry : SafeBase
 {
     #region Properties
 

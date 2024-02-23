@@ -3,18 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptLocker.DataService", "EncryptLocker.DataService\EncryptLocker.DataService.csproj", "{A9DBA12A-D665-4471-B1F0-3F0F58310879}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptLocker.DataService", "EncryptLocker.DataService\EncryptLocker.DataService.csproj", "{A9DBA12A-D665-4471-B1F0-3F0F58310879}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Protos", "Protos", "{E2837E5E-9C19-4DDD-B8C8-9CBA9F12B889}"
 	ProjectSection(SolutionItems) = preProject
-		Protos\locker.proto = Protos\locker.proto
+		Protos\accessrightmessages.proto = Protos\accessrightmessages.proto
+		Protos\encryptlocker.proto = Protos\encryptlocker.proto
+		Protos\lockermessages.proto = Protos\lockermessages.proto
+		Protos\safeentrymessages.proto = Protos\safeentrymessages.proto
+		Protos\sharedmessages.proto = Protos\sharedmessages.proto
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptLocker.Website", "EncryptLocker.Website\EncryptLocker.Website\EncryptLocker.Website.csproj", "{496B6B07-75FD-414D-B8E4-32AAF033EBD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptLocker.Database", "EncryptLocker.Database\EncryptLocker.Database.csproj", "{6B8E30E7-6AF4-47C6-A7E6-99EC2B843AC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptLocker.Website.Client", "EncryptLocker.Website\EncryptLocker.Website.Client\EncryptLocker.Website.Client.csproj", "{FF3329B3-6113-43DE-906B-A96378E36D96}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptLocker.Database", "EncryptLocker.Database\EncryptLocker.Database.csproj", "{6B8E30E7-6AF4-47C6-A7E6-99EC2B843AC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptLocker.Website", "EncryptLocker.Website\EncryptLocker.Website.csproj", "{B768665E-0FD6-47C2-B658-43B84BA97CD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,18 +28,14 @@ Global
 		{A9DBA12A-D665-4471-B1F0-3F0F58310879}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9DBA12A-D665-4471-B1F0-3F0F58310879}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9DBA12A-D665-4471-B1F0-3F0F58310879}.Release|Any CPU.Build.0 = Release|Any CPU
-		{496B6B07-75FD-414D-B8E4-32AAF033EBD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{496B6B07-75FD-414D-B8E4-32AAF033EBD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{496B6B07-75FD-414D-B8E4-32AAF033EBD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{496B6B07-75FD-414D-B8E4-32AAF033EBD1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF3329B3-6113-43DE-906B-A96378E36D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF3329B3-6113-43DE-906B-A96378E36D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF3329B3-6113-43DE-906B-A96378E36D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF3329B3-6113-43DE-906B-A96378E36D96}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B8E30E7-6AF4-47C6-A7E6-99EC2B843AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B8E30E7-6AF4-47C6-A7E6-99EC2B843AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B8E30E7-6AF4-47C6-A7E6-99EC2B843AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B8E30E7-6AF4-47C6-A7E6-99EC2B843AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B768665E-0FD6-47C2-B658-43B84BA97CD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B768665E-0FD6-47C2-B658-43B84BA97CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B768665E-0FD6-47C2-B658-43B84BA97CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B768665E-0FD6-47C2-B658-43B84BA97CD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

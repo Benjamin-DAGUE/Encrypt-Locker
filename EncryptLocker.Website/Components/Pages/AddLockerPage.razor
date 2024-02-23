@@ -1,0 +1,41 @@
+﻿@page "/addlocker"
+@inject LockerDataService DataService
+@inject ISnackbar SnackbarService
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+<PageTitle>Ajouter un coffre</PageTitle>
+<MudText Typo="Typo.h3" GutterBottom="true">Ajouter un nouveau coffre.</MudText>
+
+<MudGrid>
+    <MudItem xs="12">
+        <MudTextField T=string id="name" Style="max-width:400px" Label="Nom du coffre" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="12">
+        <MudTextField T=string id="password" Style="max-width:400px" Label="Mot de passe" Variant="Variant.Outlined" InputType="@_passwordInput" OnAdornmentClick="ShowHidePassword" AdornmentIcon="@_passwordInputIcon" Adornment="Adornment.End" AdornmentAriaLabel="Afficher le mot de passe."></MudTextField>
+    </MudItem>
+    <MudItem xs="12">
+        <MudButton OnClick="BeginAddLocker" StartIcon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Color="Color.Primary">Valider</MudButton>
+    </MudItem>
+</MudGrid>
+
+
+@* <MudText Typo="Typo.body1" GutterBottom="true">
+    Nous prenons à coeur la sécurité de vos secrets et nous tenons à vous rappeler qu'en cas de fuite des données que vous nous avez confié, votre mot de passe est le dernier niveau de protection contre un hacker.
+    Choisissez votre mot de passe avec soin, plus il sera long et complexe et plus une ouverture par force brute nécessitera de ressources.
+
+    Temps pour ouvrir le coffre = Nombre total de combinaisons possibles / Nombre de tentatives par seconde
+
+    Le nombre de tentatives par seconde dépend de la capacité de calcul de l'attaquant. Avec suffisament de ressources, il est possible de louer des infrastructures pouvant atteindre 1 miliard de combinaisons par seconde.
+
+    Le nombre de combinaisons possibles est égale à N^L où N est le nombre de caractères possible (complexité) et L la longueur du mot de passe.
+
+    Pour calculer la complexité :
+    - Majuscules (A-Z) : 26 caractères.
+    - Minuscules (a-z) : 26 caractères.
+    - Nombres (0-9) : 10 caractères.
+    - Caractères spéciaux : 32 caractères (si l'on se limite aux caractères spéciaux fréquemment utilisés).
+
+    Cette estimation ne prends pas en compte les attaques utilisants des dictionnaires de mots de passes ou des formes d'attaque hybride mélangeant la force brute et les dictionnaires.
+
+</MudText> *@

@@ -1,6 +1,6 @@
 ﻿namespace EncryptLocker.Database;
 
-public class SafeBase
+public abstract class SafeBase
 {
     #region Constants
 
@@ -13,11 +13,13 @@ public class SafeBase
 
     public int Id { get; set; }
     public int Discriminator { get; set; }
+    public int? LockerId { get; set; }
     public int? ParentId { get; set; }
     public int TitleId { get; set; }
 
     #region Navigations
 
+    public required Locker? Locker { get; set; }
     public required SafeGroup? Parent { get; set; }
     public required CypherValue Title { get; set; }
 

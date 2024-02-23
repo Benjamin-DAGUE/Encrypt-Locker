@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\Protos\locker.proto" GrpcServices="Server" />
+    <Protobuf Include="..\Protos\sharedmessages.proto" GrpcServices="Server" />
+    <Protobuf Include="..\Protos\accessrightmessages.proto" GrpcServices="Server" />
+    <Protobuf Include="..\Protos\lockermessages.proto" GrpcServices="Server" />
+    <Protobuf Include="..\Protos\safeentrymessages.proto" GrpcServices="Server" />
+    <Protobuf Include="..\Protos\encryptlocker.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.60.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.61.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,56 @@
+﻿@page "/locker/{Id:int}"
+@inject LockerDataService DataService
+@inject ISnackbar SnackbarService
+@inject IJSRuntime JSRuntime
+
+@if (_locker != null)
+{
+    <PageTitle>@_locker.Name</PageTitle>
+    <MudText Typo="Typo.h3" GutterBottom="true">@_locker.Name</MudText>
+
+    @if (_isOpened == false)
+    {
+        <MudGrid>
+            <MudItem xs="12">
+                <MudTextField T=string id="password" Style="max-width:400px" Label="Mot de passe" Variant="Variant.Outlined" InputType="@_passwordInput" OnAdornmentClick="ShowHidePassword" AdornmentIcon="@_passwordInputIcon" Adornment="Adornment.End" AdornmentAriaLabel="Afficher le mot de passe."></MudTextField>
+            </MudItem>
+            <MudItem xs="12">
+                <MudButton OnClick="BeginOpenLocker" StartIcon="@Icons.Material.Filled.LockOpen" Variant="Variant.Filled" Color="Color.Primary">Déverrouiller</MudButton>
+            </MudItem>
+        </MudGrid>
+    }
+    else
+    {
+        @if (_isDeleting)
+        {
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudText Typo="Typo.h4" GutterBottom="true">Attention, la suppression est définitive !</MudText>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField T=string id="password" Style="max-width:400px" Label="Mot de passe" Variant="Variant.Outlined" InputType="@_passwordInput" OnAdornmentClick="ShowHidePassword" AdornmentIcon="@_passwordInputIcon" Adornment="Adornment.End" AdornmentAriaLabel="Afficher le mot de passe."></MudTextField>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudButton OnClick="BeginDeleteLocker" StartIcon="@Icons.Material.Filled.Delete" Variant="Variant.Filled" Color="Color.Error">Supprimer définitivement</MudButton>
+                </MudItem>
+            </MudGrid>
+        }
+        else
+        {
+            <MudButton StartIcon="@Icons.Material.Filled.Delete" OnClick="OnDeleteLockerClick">Supprimer</MudButton>
+
+            <MudPaper>
+                @if (_safeEntries != null)
+                {
+                    @foreach (SafeEntry safeEntry in _safeEntries)
+                    {
+                        <MudText Typo="Typo.h5" GutterBottom="true">
+                            @safeEntry.Id
+                        </MudText>
+                    }
+                }
+            </MudPaper>
+        }
+    }
+
+}

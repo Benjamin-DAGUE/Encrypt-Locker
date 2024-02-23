@@ -1,0 +1,15 @@
+syntax = "proto3";
+package encryptlocker.messages;
+option csharp_namespace = "EncryptLocker.Messages";
+
+//import "google/protobuf/duration.proto";
+
+message EmptyMessage {
+
+}
+
+message ResultMessage {
+  bool is_success = 1;
+  int32 code = 2;
+  string message = 3;
+}
